@@ -56,6 +56,7 @@ async function getBrowser() {
     ),
     headless: "shell",
   });
+  return browser
 }
 
 async function fetchAndParseCalendridel() {
