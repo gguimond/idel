@@ -67,7 +67,7 @@ async function fetchAndParseCalendridel() {
   // Définir un User-Agent pour simuler Chrome
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
 
-  await page.goto(urlCalendridel, { waitUntil: 'networkidle' }); // Attendre que le réseau soit calme
+  await page.goto(urlCalendridel, { waitUntil: 'networkidle0' }); // Attendre que le réseau soit calme
 
   // Récupérer le contenu HTML après chargement
   const html = await page.content();
