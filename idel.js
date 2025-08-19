@@ -253,7 +253,6 @@ async function sendEmail(html) {
 
 
 module.exports= async function run(){
-  console.log(process.env.EMAIL_KEY)
   const html = await fetchAnnonces()
   return html
   //return sendEmail(html)
