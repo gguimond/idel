@@ -52,7 +52,7 @@ async function getBrowser() {
     args: puppeteer.defaultArgs({ args: chromium.args, headless: "shell" }),
     defaultViewport: viewport,
     executablePath: await chromium.executablePath(
-      "https://github.com/Sparticuz/chromium/releases/download/v138.0.2/chromium-v138.0.2.0.0-pack.tar"
+      "https://github.com/Sparticuz/chromium/releases/download/v138.0.2/chromium-v138.0.2-pack.x64.tar"
     ),
     headless: "shell",
   });
@@ -268,16 +268,16 @@ async function fetchAndParseIDELib() {
 }
 
 async function fetchAnnonces() {
- /* const calendridel = await fetchAndParseCalendridel();
-  const am = await fetchAndParseAM();
+  const calendridel = await fetchAndParseCalendridel();
+  /*const am = await fetchAndParseAM();
   const caducee = await fetchAndParseCaducee();
-  const idelib = await fetchAndParseIDELib();
+  const idelib = await fetchAndParseIDELib();*/
   let html = `<h1><a href='${urlCalendridel}'>Caldendridel</a><h1>`
 
   for(let a of calendridel){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
-  }*/
-  return 'html'
+  }
+  return html
 }
 
 async function sendEmail(html) {
