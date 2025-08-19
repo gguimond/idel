@@ -306,6 +306,5 @@ async function sendEmail(html) {
 
 module.exports= async function run(){
   const html = await fetchAnnonces()
-  return html
-  //return sendEmail(html)
+  return sendEmail(html)
 }
