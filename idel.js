@@ -252,10 +252,9 @@ async function sendEmail(html) {
     return info ? info.messageId : null;
 }
 
-async function run(){
+
+module.exports= async function run(){
   console.log(process.env.EMAIL_KEY)
   //const html = await fetchAnnonces()
   return sendEmail("<h1>OK</h1>")
 }
-
-run()
