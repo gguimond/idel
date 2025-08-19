@@ -245,7 +245,6 @@ async function sendEmail(html) {
         from: `"Annonces IDEL" <${process.env.EMAIL_FROM}>`,
         to: `${process.env.EMAIL_TO}`,
         subject: 'Annonces IDEL',
-        //text: body,
         html
       }).catch(console.error);
 
@@ -256,5 +255,6 @@ async function sendEmail(html) {
 module.exports= async function run(){
   console.log(process.env.EMAIL_KEY)
   const html = await fetchAnnonces()
-  return sendEmail(html)
+  return html
+  //return sendEmail(html)
 }
