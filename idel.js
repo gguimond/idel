@@ -60,6 +60,7 @@ async function getBrowser() {
 
 async function fetchAndParseCalendridel() {
   const browser = await getBrowser()
+  
   const page = await browser.newPage();
 
   // Définir un User-Agent pour simuler Chrome
@@ -268,9 +269,9 @@ async function fetchAndParseIDELib() {
 
 async function fetchAnnonces() {
   const calendridel = await fetchAndParseCalendridel();
-  const am = await fetchAndParseAM();
-  const caducee = await fetchAndParseCaducee();
-  const idelib = await fetchAndParseIDELib();
+  //const am = await fetchAndParseAM();
+ // const caducee = await fetchAndParseCaducee();
+  //const idelib = await fetchAndParseIDELib();
   let html = `<h1><a href='${urlCalendridel}'>Caldendridel</a><h1>`
 
   for(let a of calendridel){
