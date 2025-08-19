@@ -3,7 +3,7 @@
   "crons": [
     {
       "path": "/api/idel.js",
-      "schedule": "0 8,15,20 * * *"
+      "schedule": "0 15 * * *"
     }
   ]
 }
