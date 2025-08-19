@@ -268,16 +268,16 @@ async function fetchAndParseIDELib() {
 }
 
 async function fetchAnnonces() {
-  //const calendridel = await fetchAndParseCalendridel();
-  //const am = await fetchAndParseAM();
- // const caducee = await fetchAndParseCaducee();
-  //const idelib = await fetchAndParseIDELib();
+ /* const calendridel = await fetchAndParseCalendridel();
+  const am = await fetchAndParseAM();
+  const caducee = await fetchAndParseCaducee();
+  const idelib = await fetchAndParseIDELib();
   let html = `<h1><a href='${urlCalendridel}'>Caldendridel</a><h1>`
 
   for(let a of calendridel){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
-  }
-  return html
+  }*/
+  return 'html'
 }
 
 async function sendEmail(html) {
