@@ -67,7 +67,7 @@ async function fetchAndParseCalendridel() {
   // Définir un User-Agent pour simuler Chrome
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36');
 
-  await page.goto(urlCalendridel, { waitUntil: 'networkidle2' }); // Attendre que le réseau soit calme
+  await page.goto(urlCalendridel, { waitUntil: 'networkidle0' }); // Attendre que le réseau soit calme
 
   // Récupérer le contenu HTML après chargement
   const html = await page.content();
@@ -273,21 +273,41 @@ async function fetchAnnonces() {
   const am = await fetchAndParseAM();
   const caducee = await fetchAndParseCaducee();
   const idelib = await fetchAndParseIDELib();
+  let i = 0;
+
   let html = `<h1><a href='${urlCalendridel}'>Caldendridel</a><h1>`
   for(let a of calendridel){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+    if(++i > 4){
+      return
+    }
   }
-  html += `<h1><a href='${urlAM}'>Caldendridel</a><h1>`
+
+  i = 0
+  html += `<h1><a href='${urlAM}'>Annonces Medicales</a><h1>`
   for(let a of am){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+    if(++i > 4){
+      return
+    }
   }
-  html += `<h1><a href='${urlCaducee}'>Caldendridel</a><h1>`
+
+  i = 0
+  html += `<h1><a href='${urlCaducee}'>Caducee</a><h1>`
   for(let a of caducee){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+    if(++i > 4){
+      return
+    }
   }
-  html += `<h1><a href='${urlIDELib}'>Caldendridel</a><h1>`
+
+  i = 0
+  html += `<h1><a href='${urlIDELib}'>IDE liberal</a><h1>`
   for(let a of idelib){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+    if(++i > 4){
+      return
+    }
   }
   return html
 }
