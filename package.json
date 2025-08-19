@@ -1,6 +1,7 @@
 {
   "type": "commonjs",
   "dependencies": {
+    "@sparticuz/chromium-min": "^138.0.2",
     "axios": "^1.11.0",
     "cheerio": "^1.1.2",
     "nodemailer": "^7.0.5",

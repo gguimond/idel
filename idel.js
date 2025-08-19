@@ -1,3 +1,4 @@
+const chromium = require('@sparticuz/chromium-min');
 const puppeteer = require('puppeteer-extra');
 require('puppeteer-extra-plugin-stealth/evasions/chrome.app');
 require('puppeteer-extra-plugin-stealth/evasions/chrome.csi');
@@ -38,8 +39,27 @@ const urlIDELib = 'https://www.ide-liberal.com/annonces.php'
 
 puppeteer.use(StealthPlugin())
 
+async function getBrowser() {
+  const viewport = {
+    deviceScaleFactor: 1,
+    hasTouch: false,
+    height: 1080,
+    isLandscape: true,
+    isMobile: false,
+    width: 1920,
+  };
+  const browser = await puppeteer.launch({
+    args: puppeteer.defaultArgs({ args: chromium.args, headless: "shell" }),
+    defaultViewport: viewport,
+    executablePath: await chromium.executablePath(
+      "https://github.com/Sparticuz/chromium/releases/download/v138.0.2/chromium-v138.0.2.0.0-pack.tar"
+    ),
+    headless: "shell",
+  });
+}
+
 async function fetchAndParseCalendridel() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await getBrowser()
   const page = await browser.newPage();
 
   // Définir un User-Agent pour simuler Chrome
@@ -96,7 +116,7 @@ async function fetchAndParseCalendridel() {
 }
 
 async function fetchAndParseAM() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await getBrowser()
   const page = await browser.newPage();
 
   // Définir un User-Agent pour simuler Chrome
@@ -145,7 +165,7 @@ async function fetchAndParseAM() {
 }
 
 async function fetchAndParseCaducee() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await getBrowser()
   const page = await browser.newPage();
 
   // Définir un User-Agent pour simuler Chrome
@@ -194,7 +214,7 @@ async function fetchAndParseCaducee() {
 
 
 async function fetchAndParseIDELib() {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await getBrowser()
   const page = await browser.newPage();
 
   // Définir un User-Agent pour simuler Chrome
