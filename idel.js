@@ -268,7 +268,7 @@ async function fetchAndParseIDELib() {
 }
 
 async function fetchAnnonces() {
-  const calendridel = await fetchAndParseCalendridel();
+  //const calendridel = await fetchAndParseCalendridel();
   //const am = await fetchAndParseAM();
  // const caducee = await fetchAndParseCaducee();
   //const idelib = await fetchAndParseIDELib();
