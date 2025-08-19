@@ -270,12 +270,23 @@ async function fetchAndParseIDELib() {
 
 async function fetchAnnonces() {
   const calendridel = await fetchAndParseCalendridel();
-  /*const am = await fetchAndParseAM();
+  const am = await fetchAndParseAM();
   const caducee = await fetchAndParseCaducee();
-  const idelib = await fetchAndParseIDELib();*/
+  const idelib = await fetchAndParseIDELib();
   let html = `<h1><a href='${urlCalendridel}'>Caldendridel</a><h1>`
-
   for(let a of calendridel){
+    html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+  }
+  html += `<h1><a href='${urlAM}'>Caldendridel</a><h1>`
+  for(let a of am){
+    html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+  }
+  html += `<h1><a href='${urlCaducee}'>Caldendridel</a><h1>`
+  for(let a of caducee){
+    html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+  }
+  html += `<h1><a href='${urlIDELib}'>Caldendridel</a><h1>`
+  for(let a of idelib){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
   }
   return html
