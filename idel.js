@@ -200,7 +200,7 @@ async function fetchAndParseCaducee() {
       annonce.date = 'Inconnue';
     }
 
-    const infos1Content = $(element).find('.post-desc p').text().trim();
+    const infos1Content = $(element).find('.post-desc p').text().trim().slice(0, 300);
     annonce.detail = infos1Content;
 
     const infosTitle = $(element).find('.post-title').text().trim();
