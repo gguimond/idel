@@ -200,7 +200,7 @@ async function fetchAndParseCaducee() {
       annonce.date = 'Inconnue';
     }
 
-    const infos1Content = $(element).find('.post-desc p').text().trim().slice(0, 300);
+    const infos1Content = $(element).find('.post-desc p').text().trim();
     annonce.detail = infos1Content;
 
     const infosTitle = $(element).find('.post-title').text().trim();
@@ -284,6 +284,15 @@ async function fetchAnnonces() {
   }
 
   i = 0
+  html += `<h1><a href='${urlIDELib}'>IDE liberal</a><h1>`
+  for(let a of idelib){
+    html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
+    if(++i > 4){
+      break
+    }
+  }
+
+  i = 0
   html += `<h1><a href='${urlAM}'>Annonces Medicales</a><h1>`
   for(let a of am){
     html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
@@ -301,14 +310,6 @@ async function fetchAnnonces() {
     }
   }
 
-  i = 0
-  html += `<h1><a href='${urlIDELib}'>IDE liberal</a><h1>`
-  for(let a of idelib){
-    html += `<h2>${a.localisation} - ${a.title}</h2><h3>${a.date}</h3><p><pre>${a.detail}<pre></p>`
-    if(++i > 4){
-      break
-    }
-  }
   return html
 }
 
